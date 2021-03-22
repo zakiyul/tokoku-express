@@ -18,6 +18,10 @@ const produkSchema = mongoose.Schema({
     type: ObjectId,
     ref: "Toko",
   },
+  gambar: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Produk", produkSchema);
