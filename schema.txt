@@ -12,5 +12,6 @@ produk = [
   nama: String,
   harga: Number,
   categori: categori,
-  toko: toko
+  toko: toko,
+  gambar: String,
 ]
