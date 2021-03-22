@@ -1,0 +1,16 @@
+toko = [
+  nama: String,
+  owner: String,
+  alamat: text
+]
+
+categori = [
+  jenis: String,
+]
+
+produk = [
+  nama: String,
+  harga: Number,
+  categori: categori,
+  toko: toko
+]
