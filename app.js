@@ -3,6 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+//import mongoose
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/db_tokoku", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 var indexRouter = require("./routes/index");
 const adminRouter = require("./routes/admin");
