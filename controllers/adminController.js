@@ -8,8 +8,10 @@ module.exports = {
     res.render("admin/toko/view_toko");
   },
 
-  viewCategori: (req, res) => {
-    res.render("admin/categori/view_categori");
+  viewCategori: async (req, res) => {
+    const categori = await Categori.find();
+    // console.log(categori);
+    res.render("admin/categori/view_categori", { categori });
   },
   addCategori: async (req, res) => {
     const { jenis } = req.body;

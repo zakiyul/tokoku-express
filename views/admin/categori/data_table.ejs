@@ -1,38 +1,33 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-plus"></i> </button>
-      </h6>
+    <h6 class="m-0 font-weight-bold text-primary">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> <i
+          class="fas fa-plus"></i> </button>
+    </h6>
   </div>
   <div class="card-body">
-      <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                  <tr>
-                      <th>No</th>
-                      <th>Jenis</th>
-                      <th>Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>Snack</td>
-                      <td>
-                          <button class="btn btn-success"><i class="fas fa-pen"></i></button>
-                          <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
-                      </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Bahan Dapur</td>
-                    <td>
-                        <button class="btn btn-success"><i class="fas fa-pen"></i></button>
-                        <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
-                    </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Jenis</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < categori.length; i++) { %>
+            <tr>
+              <td> <%= i + 1 %> </td>
+              <td> <%= categori[i].jenis %> </td>
+              <td>
+                <button class="btn btn-warning btn-circle btn-sm mr-3"><i class="fas fa-pen"></i></button>
+                <button class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i> </button>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
