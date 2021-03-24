@@ -5,9 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var tokoRouter = require("./routes/toko");
-var produkRouter = require("./routes/produk");
-var categoriRouter = require("./routes/categori");
+const adminRouter = require("./routes/admin");
 
 var app = express();
 
@@ -25,10 +23,7 @@ app.use(
   express.static(path.join(__dirname, "node_modules/startbootstrap-sb-admin-2"))
 );
 
-app.use("/", indexRouter);
-app.use("/toko", tokoRouter);
-app.use("/produk", produkRouter);
-app.use("/categori", categoriRouter);
+app.use("/", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
