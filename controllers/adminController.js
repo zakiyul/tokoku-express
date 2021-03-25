@@ -20,14 +20,14 @@ module.exports = {
   },
   editCategory: async (req, res) => {
     const { id, jenis } = req.body;
-    const categori = await Categori.findOne({ _id: id });
+    const categori = await Categori.findById(id);
     categori.jenis = jenis;
     await categori.save();
     res.redirect("/categori");
   },
   deleteCategori: async (req, res) => {
     const { id } = req.params;
-    const categori = await Categori.findOne({ _id: id });
+    const categori = await Categori.findById(id);
     await categori.remove();
     res.redirect("/categori");
   },
