@@ -10,7 +10,7 @@ const tokoSchema = new mongoose.Schema({
     required: [true, "Data owner belum terisi!"],
   },
   alamat: {
-    type: Text,
+    type: String,
     required: [true, "Data alamat belum terisi!"],
   },
 });

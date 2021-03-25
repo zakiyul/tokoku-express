@@ -1,44 +1,50 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">
-          <button class="btn btn-primary"> <i class="fas fa-plus"></i> </button>
-      </h6>
+    <h6 class="m-0 font-weight-bold text-primary">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal"> <i
+          class="fas fa-plus"></i> </button>
+    </h6>
   </div>
   <div class="card-body">
-      <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                  <tr>
-                      <th>No</th>
-                      <th>Name</th>
-                      <th>Owner</th>
-                      <th>Alamat</th>
-                      <th>Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>Indomaret</td>
-                      <td>Susilo Bmbng Y</td>
-                      <td>Jakarta Barat</td>
-                      <td>
-                          <button class="btn btn-success"><i class="fas fa-pen"></i></button>
-                          <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
-                      </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Alfamaret</td>
-                    <td>Joko Widodo</td>
-                    <td>Jakarta Timur</td>
-                    <td>
-                        <button class="btn btn-success"><i class="fas fa-pen"></i></button>
-                        <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
-                    </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Alamat</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < toko.length; i++) { %>
+            <tr>
+              <td>
+                <%= i + 1 %>
+              </td>
+              <td>
+                <%= toko[i].nama %>
+              </td>
+              <td>
+                <%= toko[i].owner %>
+              </td>
+              <td>
+                <%= toko[i].alamat %>
+              </td>
+              <td>
+                <form action="/toko/<%= toko[i].id %>?_method=DELETE" method="post">
+                  <a href="javascript:void()" class="btn btn-warning btn-circle btn-sm btn-update mr-3"
+                    data-id="<%= toko[i].id %>" data-nama="<%= toko[i].nama %>" data-owner="<%= toko[i].owner %>"
+                    data-alamat="<%= toko[i].alamat %>">
+                    <i class="fas fa-pen"></i></a>
+                  <button type="submit" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i> </button>
+                </form>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

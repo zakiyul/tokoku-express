@@ -22,6 +22,8 @@
           
           <!-- table -->
           <%- include('data_table.ejs') %>
+          <%- include('add_modal.ejs') %>
+          <%- include('edit_modal.ejs') %>
 
         </div>
 
@@ -40,3 +42,17 @@
 <%- include('../../partials/scroll_to_top.ejs') %>
 <%- include('../../partials/logout-modal.ejs') %>
 <%- include('../../partials/js.ejs') %>
+
+<script>
+  $('#dataTable').on('click', '.btn-update', function (){
+    let id = $(this).data('id');
+    let nama = $(this).data('nama');
+    let owner = $(this).data('owner');
+    let alamat = $(this).data('alamat');
+    $('#edit-modal').modal('show');
+    $('.taruh-id-disini').val(id);
+    $('.taruh-nama-disini').val(nama);
+    $('.taruh-owner-disini').val(owner);
+    $('.taruh-alamat-disini').val(alamat);
+  })
+</script>
