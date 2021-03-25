@@ -23,6 +23,7 @@
           <!-- Tabel -->
           <%- include('data_table.ejs') %>
           <%- include('add_modal.ejs') %>
+          <%- include('edit_modal.ejs') %>
 
         </div>
 
@@ -41,3 +42,13 @@
 <%- include('../../partials/scroll_to_top.ejs') %>
 <%- include('../../partials/logout-modal.ejs') %>
 <%- include('../../partials/js.ejs') %>
+
+<script>
+  $('#dataTable').on('click', '.btn-update', function () {
+    let id = $(this).data('id');
+    let jenis = $(this).data('jenis');
+    $('#edit-modal').modal('show');
+    $('.taruh-id-disini').val(id);
+    $('.taruh-jenis-disini').val(jenis);
+  })
+</script>

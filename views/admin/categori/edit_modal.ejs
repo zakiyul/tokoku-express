@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Categori</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/categori?_method=PUT" method="post" >
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="jenis">Jenis</label>
+            <input type="text" class="form-control taruh-jenis-disini" id="jenis" name="jenis" aria-describedby="emailHelp" placeholder="Masukan Jenis">
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="id" class="taruh-id-disini">
+            <button type="submit" class="btn btn-primary">update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
