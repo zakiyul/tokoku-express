@@ -25,6 +25,12 @@ module.exports = {
     await categori.save();
     res.redirect("/categori");
   },
+  deleteCategori: async (req, res) => {
+    const { id } = req.params;
+    const categori = await Categori.findOne({ _id: id });
+    await categori.remove();
+    res.redirect("/categori");
+  },
 
   viewProduk: (req, res) => {
     res.render("admin/produk/view_produk");

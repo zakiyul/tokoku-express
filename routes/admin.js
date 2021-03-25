@@ -6,6 +6,7 @@ router.get("/toko", adminController.viewToko);
 router.get("/categori", adminController.viewCategori);
 router.post("/categori", adminController.addCategori);
 router.put("/categori", adminController.editCategory);
+router.delete("/categori/:id", adminController.deleteCategori);
 router.get("/produk", adminController.viewProduk);
 
 module.exports = router;

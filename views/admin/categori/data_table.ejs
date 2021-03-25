@@ -21,8 +21,10 @@
               <td> <%= i + 1 %> </td>
               <td> <%= categori[i].jenis %> </td>
               <td>
-                <a href="javascript:void()" class="btn btn-warning btn-circle btn-sm btn-update mr-3" data-id="<%= categori[i].id %>" data-jenis="<%= categori[i].jenis %>" ><i class="fas fa-pen"></i></a>
-                <button class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i> </button>
+                <form action="/categori/<%= categori[i].id %>?_method=DELETE" method="POST">
+                  <a href="javascript:void()" class="btn btn-warning btn-circle btn-sm btn-update mr-3" data-id="<%= categori[i].id %>" data-jenis="<%= categori[i].jenis %>" ><i class="fas fa-pen"></i></a>
+                  <button type="submit" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i> </button>
+                </form>
               </td>
             </tr>
           <% } %>
