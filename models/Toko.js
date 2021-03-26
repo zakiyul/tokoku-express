@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const tokoSchema = new mongoose.Schema({
   nama: {
@@ -12,6 +13,10 @@ const tokoSchema = new mongoose.Schema({
   alamat: {
     type: String,
     required: [true, "Data alamat belum terisi!"],
+  },
+  produkId: {
+    type: ObjectId,
+    ref: "Produk",
   },
 });
 

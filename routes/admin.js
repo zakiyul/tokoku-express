@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const adminController = require("../controllers/adminController");
+const { upload } = require("../middleware/multer");
 
 router.get("/", adminController.viewDashboard);
 
@@ -14,5 +15,6 @@ router.put("/categori", adminController.editCategory);
 router.delete("/categori/:id", adminController.deleteCategori);
 
 router.get("/produk", adminController.viewProduk);
+router.post("/produk", upload, adminController.addProduk);
 
 module.exports = router;

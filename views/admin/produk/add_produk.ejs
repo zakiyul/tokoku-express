@@ -1,0 +1,38 @@
+<div class="card shadow mb-4 mt-2">
+  <div class="card-body">
+    <form action="/produk" method="post" enctype="multipart/form-data" >
+     
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama">
+        </div>
+        <div class="form-group">
+          <label for="harga">Harga</label>
+          <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukan harga">
+        </div>
+        <div class="form-group">
+          <label>Categori</label>
+          <select name="categoriId" class="form-control">
+            <option value="">-- Categori --</option>
+            <% for(let i = 0; i < categori.length; i++) { %>
+              <option value="<%= categori[i].id %>"> <%= categori[i].jenis %></option>
+            <% } %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Toko</label>
+          <select name="tokoId" class="form-control">
+            <option value="">-- Toko --</option>
+            <% for(let i = 0; i < toko.length; i++) { %>
+              <option value="<%= toko[i].id %>"> <%= toko[i].nama %></option>
+            <% } %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gambar">Gambar</label>
+          <input type="file" name="gambar" id="gambar" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">add</button>
+    </form>
+  </div>
+</div>
