@@ -6,8 +6,11 @@ const path = require("path");
 const fs = require("fs-extra");
 
 module.exports = {
-  viewDashboard: (req, res) => {
-    res.render("admin/dashboard/view_dashboard");
+  viewDashboard: async (req, res) => {
+    const toko = await Toko.find();
+    const categori = await Categori.find();
+    const produk = await Produk.find();
+    res.render("admin/dashboard/view_dashboard", { toko, produk, categori });
   },
   viewToko: async (req, res) => {
     const toko = await Toko.find();
