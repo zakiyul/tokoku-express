@@ -15,7 +15,9 @@ router.put("/categori", adminController.editCategory);
 router.delete("/categori/:id", adminController.deleteCategori);
 
 router.get("/produk", adminController.viewProduk);
+router.get("/produk/edit/:id", adminController.viewEditProduk);
 router.post("/produk", upload, adminController.addProduk);
+router.put("/produk/edit/:id", upload, adminController.editProduk);
 router.delete("/produk/:id", adminController.deleteProduk);
 
 module.exports = router;

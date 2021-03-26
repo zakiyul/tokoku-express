@@ -80,6 +80,41 @@ module.exports = {
     }
     res.redirect("/produk");
   },
+  viewEditProduk: async (req, res) => {
+    const { id } = req.params;
+    const categori = await Categori.find();
+    const toko = await Toko.find();
+    const produk = await Produk.findById(id)
+      .populate({ path: "categoriId", select: "id jenis" })
+      .populate({ path: "tokoId", select: "id nama" });
+    res.render("admin/produk/view_edit_produk", { produk, toko, categori });
+  },
+  editProduk: async (req, res) => {
+    const { id } = req.params;
+    const { nama, harga, categoriId, tokoId } = req.body;
+    const categori = await Categori.find();
+    const toko = await Categori.find();
+    const produk = await Produk.findById(id);
+    console.log(produk);
+
+    if (req.file) {
+      await fs.unlink(path.join(`public/${produk.gambar}`));
+      produk.nama = nama;
+      produk.harga = harga;
+      produk.categoriId = categoriId;
+      produk.tokoId = tokoId;
+      produk.gambar = `images/${req.file.filename}`;
+      await produk.save();
+      res.redirect("/produk");
+    } else {
+      produk.nama = nama;
+      produk.harga = harga;
+      produk.categoriId = categoriId;
+      produk.tokoId = tokoId;
+      await produk.save();
+      res.redirect("/produk");
+    }
+  },
   deleteProduk: async (req, res) => {
     const { id } = req.params;
     const produk = await Produk.findById(id);
