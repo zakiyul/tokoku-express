@@ -3,6 +3,7 @@ const Categori = require("../models/Categori");
 const Produk = require("../models/Produk");
 
 const path = require("path");
+const fs = require("fs-extra");
 
 module.exports = {
   viewDashboard: (req, res) => {
@@ -77,6 +78,13 @@ module.exports = {
       };
       const produk = await Produk.create(newProduk);
     }
+    res.redirect("/produk");
+  },
+  deleteProduk: async (req, res) => {
+    const { id } = req.params;
+    const produk = await Produk.findById(id);
+    await fs.unlink(path.join(`public/${produk.gambar}`));
+    await produk.remove();
     res.redirect("/produk");
   },
 };

@@ -18,13 +18,15 @@
             <tr>
               <td> <%= i + 1 %></td>
               <td> <%= produk[i].nama %></td> </td>
-              <td> <%= produk[i].harga %> </td>
+              <td> Rp. <%= produk[i].harga %> </td>
               <td> <%= produk[i].categoriId.jenis %> </td>
               <td> <%= produk[i].tokoId.nama %> </td>
               <td> <img src="<%= produk[i].gambar %>" alt="gambar" width="80px"> </td>
               <td>
-                <button class="btn btn-success"><i class="fas fa-pen"></i></button>
-                <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
+                <form action="/produk/<%= produk[i].id %>?_method=DELETE" method="POST">
+                  <a href="javascript:void()" class="btn btn-warning btn-circle btn-sm btn-update mr-3" ><i class="fas fa-pen"></i></a>
+                  <button type="submit" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i> </button>
+                </form>
               </td>
             </tr>
           <% } %>

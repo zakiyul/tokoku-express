@@ -16,5 +16,6 @@ router.delete("/categori/:id", adminController.deleteCategori);
 
 router.get("/produk", adminController.viewProduk);
 router.post("/produk", upload, adminController.addProduk);
+router.delete("/produk/:id", adminController.deleteProduk);
 
 module.exports = router;
