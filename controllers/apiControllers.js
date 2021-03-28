@@ -11,6 +11,15 @@ module.exports = {
       console.log(error.message);
     }
   },
+  apiDetailToko: async (req, res) => {
+    try {
+      const toko = await Toko.findById(req.params.id);
+      res.json(toko);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+
   apiCategori: async (req, res) => {
     try {
       const categori = await Categori.find();
@@ -19,9 +28,20 @@ module.exports = {
       console.log(error.message);
     }
   },
+  apiDetailCategori: async (req, res) => {
+    try {
+      const categori = await Categori.findById(req.params.id);
+      res.json(categori);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+
   apiProduk: async (req, res) => {
     try {
-      const produk = await Produk.find();
+      const produk = await Produk.find()
+        .populate({ path: "categoriId", select: "id jenis" })
+        .populate({ path: "tokoId", select: "id nama" });
       res.json(produk);
     } catch (error) {
       console.log(error.message);
