@@ -17,9 +17,13 @@ module.exports = {
     res.render("admin/toko/view_toko", { toko });
   },
   addToko: async (req, res) => {
-    const { nama, owner, alamat } = req.body;
-    await Toko.create({ nama, owner, alamat });
-    res.redirect("/toko");
+    try {
+      const { nama, owner, alamat } = req.body;
+      await Toko.create({ nama, owner, alamat });
+      res.redirect("/toko");
+    } catch (error) {
+      res.redirect("/toko");
+    }
   },
   editToko: async (req, res) => {
     const { id, nama, owner, alamat } = req.body;
@@ -42,9 +46,13 @@ module.exports = {
     res.render("admin/categori/view_categori", { categori });
   },
   addCategori: async (req, res) => {
-    const { jenis } = req.body;
-    await Categori.create({ jenis: jenis });
-    res.redirect("/categori");
+    try {
+      const { jenis } = req.body;
+      await Categori.create({ jenis: jenis });
+      res.redirect("/categori");
+    } catch (error) {
+      res.redirect("/categori");
+    }
   },
   editCategory: async (req, res) => {
     const { id, jenis } = req.body;
@@ -69,19 +77,22 @@ module.exports = {
     res.render("admin/produk/view_produk", { produk, toko, categori });
   },
   addProduk: async (req, res) => {
-    const { nama, harga, categoriId, tokoId } = req.body;
-
-    if (req.file) {
-      const newProduk = {
-        nama,
-        harga,
-        categoriId,
-        tokoId,
-        gambar: `images/${req.file.filename}`,
-      };
-      const produk = await Produk.create(newProduk);
+    try {
+      const { nama, harga, categoriId, tokoId } = req.body;
+      if (req.file) {
+        const newProduk = {
+          nama,
+          harga,
+          categoriId,
+          tokoId,
+          gambar: `images/${req.file.filename}`,
+        };
+        await Produk.create(newProduk);
+      }
+      res.redirect("/produk");
+    } catch (error) {
+      res.redirect("/produk");
     }
-    res.redirect("/produk");
   },
   viewEditProduk: async (req, res) => {
     const { id } = req.params;
@@ -95,8 +106,6 @@ module.exports = {
   editProduk: async (req, res) => {
     const { id } = req.params;
     const { nama, harga, categoriId, tokoId } = req.body;
-    const categori = await Categori.find();
-    const toko = await Categori.find();
     const produk = await Produk.findById(id);
     console.log(produk);
 
