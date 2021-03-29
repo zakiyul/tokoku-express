@@ -36,6 +36,15 @@ module.exports = {
       console.log(error.message);
     }
   },
+  apiCreateCategori: async (req, res) => {
+    const { jenis } = req.body;
+    try {
+      await Categori.create({ jenis });
+      res.status(201).json({ message: "berhasil!", jenis });
+    } catch (error) {
+      alert(error);
+    }
+  },
 
   apiProduk: async (req, res) => {
     try {
@@ -49,10 +58,31 @@ module.exports = {
   },
   apiDetailProduk: async (req, res) => {
     try {
-      const produk = await Produk.findById(req.params.id);
+      const produk = await Produk.findById(req.params.id)
+        .populate({ path: "categoriId", select: "id jenis" })
+        .populate({ path: "tokoId", select: "id nama" });
       res.json(produk);
     } catch (error) {
       console.log(error.message);
     }
+  },
+  apiPostProduk: async (req, res) => {
+    const { nama, harga, categoriId, tokoId } = req.body;
+    if (!req.file) return res.status(404).json({ message: "image not found!" });
+    try {
+      const newProduk = {
+        nama,
+        harga,
+        categoriId,
+        tokoId,
+        gambar: `images/${req.file.filename}`,
+      };
+      const produk = await Produk.create(newProduk);
+      res.status(201).json(newProduk);
+    } catch (error) {
+      res.json(error);
+    }
+
+    // const produk = await Produk.create(newProduk);
   },
 };
