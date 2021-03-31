@@ -34,6 +34,21 @@ module.exports = {
     }
   },
 
+  apiUpdateToko: async (req, res) => {
+    const { nama, owner, alamat } = req.body;
+    const { id } = req.params;
+    try {
+      await Toko.findByIdAndUpdate(id, {
+        nama,
+        owner,
+        alamat,
+      });
+      res.status(201).json({ message: "data updated!" });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   apiCategori: async (req, res) => {
     try {
       const categori = await Categori.find();
