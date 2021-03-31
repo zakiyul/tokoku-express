@@ -19,6 +19,20 @@ module.exports = {
       console.log(error.message);
     }
   },
+  apiCreateToko: async (req, res) => {
+    const { nama, owner, alamat } = req.body;
+    try {
+      const newToko = {
+        nama,
+        owner,
+        alamat,
+      };
+      await Toko.create(newToko);
+      res.status(201).json({ message: "data created! ", newToko });
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
   apiCategori: async (req, res) => {
     try {
