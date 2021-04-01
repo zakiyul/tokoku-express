@@ -48,6 +48,16 @@ module.exports = {
       console.log(error);
     }
   },
+  apiDeleteToko: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const toko = await Toko.findById(id);
+      await toko.remove();
+      res.status(201).json({ message: "data deleted!" });
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
   apiCategori: async (req, res) => {
     try {
